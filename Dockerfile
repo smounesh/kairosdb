@@ -1,5 +1,5 @@
 FROM ubuntu:jammy
-LABEL Description="A docker image to run kairosdb"
+LABEL Author="Shankar Mounesh" Description="A docker image to run kairosdb"
 
 # Stop dpkg-reconfigure tzdata from prompting for input
 ENV DEBIAN_FRONTEND=noninteractive
@@ -20,6 +20,8 @@ RUN apt-get update && \
     apt-get clean
 
 EXPOSE 8080 4242
+
+USER www-data
 
 ENTRYPOINT ["/opt/kairosdb/bin/kairosdb.sh", "run"]
 
